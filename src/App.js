@@ -29,6 +29,10 @@ class App extends Component {
     const rows = this.state.value.split(/\r|\n/);
     const filtered = rows
       .filter(row => row.match(/\S/))
+      .map(row => {
+        const url = new URL(row);
+        return url
+      })
       .map(row => new URL(row))
   
     return `<?xml version="1.0" encoding="UTF-8"?>
